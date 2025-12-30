@@ -1,0 +1,50 @@
+src/
+├── app/                         # Routing layer (Next App Router)
+│   ├── (auth)/                  # Route group (tidak muncul di URL)
+│   │   └── login/
+│   │       └── page.tsx          # Halaman login
+│   ├── dashboard/
+│   │   ├── layout.tsx            # Layout khusus dashboard
+│   │   └── page.tsx              # Halaman dashboard
+│   ├── api/                      # Route handler (API Next.js)
+│   │   └── auth/
+│   │       └── route.ts          # Endpoint API auth
+│   ├── layout.tsx                # Root layout (wrap providers global)
+│   └── page.tsx                  # Halaman utama
+│
+├── features/                     # Domain & business logic per fitur
+│   ├── auth/                     # Fitur autentikasi
+│   │   ├── components/           # UI khusus auth
+│   │   ├── hooks/                # Hook logic auth (useLogin, useAuth)
+│   │   ├── services/             # Use case / API call auth
+│   │   ├── stores/               # State lokal fitur (Zustand)
+│   │   ├── types/                # Type / DTO auth
+│   │   └── index.ts              # Public API fitur auth
+│   ├── user/                     # Fitur user
+│   └── product/                  # Fitur product
+│
+├── shared/                       # Reusable lintas fitur
+│   ├── components/               # UI umum (Button, Modal, Input)
+│   ├── hooks/                    # Hook umum (useDebounce, useToggle)
+│   ├── lib/                      # Wrapper library (fetch, axios, client)
+│   ├── services/                 # Service umum (helper API)
+│   ├── utils/                    # Helper function (format, validate)
+│   ├── types/                    # Type umum (ApiResponse, Pagination)
+│   └── providers/                # ⭐ Global context/provider
+│       └── theme-provider.tsx    # ThemeProvider (dark/light/system)
+│
+├── config/                       # Konfigurasi aplikasi
+│   ├── env.ts                    # Wrapper environment variable
+│   ├── constants.ts              # Konstanta global
+│   └── routes.ts                 # Daftar route (hindari hardcode)
+│
+├── stores/                       # Global state lintas fitur
+│   └── auth.store.ts             # State auth global (user/session)
+│
+├── styles/                       # Styling global
+│   └── globals.css               # Global CSS & CSS variables
+│
+├── types/                        # Global TypeScript types
+│   └── common.ts                 # Type umum lintas domain
+│
+└── middleware.ts                 # Middleware (auth guard, redirect, dll)
