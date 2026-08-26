@@ -15,8 +15,8 @@ export default function DropdownItem({
       className={`flex w-full items-center gap-3 px-3 py-2 text-sm transition
         ${
           danger
-            ? "text-red-600 hover:bg-red-50"
-            : "hover:bg-black/5"
+            ? "text-red-600 dark:text-red-400 hover:bg-black/5 dark:hover:bg-white/15"
+            : "hover:bg-black/5 dark:hover:bg-white/15"
         }`}
     >
       <span className="text-lg">{icon}</span>
