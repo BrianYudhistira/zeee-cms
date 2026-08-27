@@ -33,7 +33,7 @@ export function AuthGuard({ children }: AuthGuardProps) {
             <div className="flex items-center justify-center min-h-[60vh] w-full">
                 <div className="flex flex-col items-center gap-3">
                     <Loader2 className="w-8 h-8 animate-spin text-blue-600 dark:text-blue-400" />
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Memuat sesi...</p>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">Loading...</p>
                 </div>
             </div>
         );

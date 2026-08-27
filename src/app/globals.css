@@ -1,26 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
+/* ── Theme Tokens ─────────────────────────────────────────── */
+
+/* Default fallback = light (prevents flash on SSR) */
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
+  --app-bg:                  #f0f2f7;
+  --sidebar-bg:              #ffffff;
+  --sidebar-border:          rgba(0, 0, 0, 0.08);
+  --surface:                 #ffffff;
+  --surface-hover:           #f3f4f6;
+  --border:                  rgba(0, 0, 0, 0.09);
+  --divider:                 rgba(0, 0, 0, 0.09);
+  --text-primary:            #111827;
+  --text-secondary:          #6b7280;
+  --thead-bg:                #f9fafb;
+  --input-bg:                #ffffff;
+  --input-border:            rgba(0, 0, 0, 0.15);
+  /* Nav item tokens */
+  --nav-active-bg:           #111827;
+  --nav-active-text:         #ffffff;
+  --nav-inactive-text:       #374151;
+  --nav-hover-bg:            rgba(0, 0, 0, 0.06);
+  --nav-chevron-inactive:    #9ca3af;
+  --nav-sub-active-text:     #111827;
+  --nav-sub-inactive-text:   #9ca3af;
+  --nav-sub-hover-text:      #111827;
+  /* User section */
+  --user-hover-bg:           rgba(0, 0, 0, 0.05);
+  --dropdown-bg:             #ffffff;
+  --dropdown-border:         rgba(0, 0, 0, 0.1);
+  /* Font */
+  --font-dm-sans:            "DM Sans", sans-serif;
 }
 
-.dark {
-  --background: #0f172a;
-  --foreground: #e5e7eb;
+.theme-light {
+  --app-bg:                  #f0f2f7;
+  --sidebar-bg:              #ffffff;
+  --sidebar-border:          rgba(0, 0, 0, 0.08);
+  --surface:                 #ffffff;
+  --surface-hover:           #f3f4f6;
+  --border:                  rgba(0, 0, 0, 0.09);
+  --divider:                 rgba(0, 0, 0, 0.09);
+  --text-primary:            #111827;
+  --text-secondary:          #6b7280;
+  --thead-bg:                #f9fafb;
+  --input-bg:                #ffffff;
+  --input-border:            rgba(0, 0, 0, 0.15);
+  --nav-active-bg:           #111827;
+  --nav-active-text:         #ffffff;
+  --nav-inactive-text:       #374151;
+  --nav-hover-bg:            rgba(0, 0, 0, 0.06);
+  --nav-chevron-inactive:    #9ca3af;
+  --nav-sub-active-text:     #111827;
+  --nav-sub-inactive-text:   #9ca3af;
+  --nav-sub-hover-text:      #111827;
+  --user-hover-bg:           rgba(0, 0, 0, 0.05);
+  --dropdown-bg:             #ffffff;
+  --dropdown-border:         rgba(0, 0, 0, 0.1);
 }
 
+.theme-blue {
+  --app-bg:                  #eef1f7;
+  --sidebar-bg:              #ffffff;
+  --sidebar-border:          rgba(46, 87, 154, 0.1);
+  --surface:                 #ffffff;
+  --surface-hover:           #f0f4ff;
+  --border:                  rgba(46, 87, 154, 0.14);
+  --divider:                 rgba(46, 87, 154, 0.12);
+  --text-primary:            #111827;
+  --text-secondary:          #4b5563;
+  --thead-bg:                #f5f7ff;
+  --input-bg:                #ffffff;
+  --input-border:            rgba(46, 87, 154, 0.2);
+  --nav-active-bg:           rgba(46, 87, 154, 0.1);
+  --nav-active-text:         #2e579a;
+  --nav-inactive-text:       #374151;
+  --nav-hover-bg:            rgba(46, 87, 154, 0.06);
+  --nav-chevron-inactive:    #9ca3af;
+  --nav-sub-active-text:     #2e579a;
+  --nav-sub-inactive-text:   #9ca3af;
+  --nav-sub-hover-text:      #2e579a;
+  --user-hover-bg:           rgba(46, 87, 154, 0.05);
+  --dropdown-bg:             #ffffff;
+  --dropdown-border:         rgba(46, 87, 154, 0.12);
+}
+
+.theme-dark {
+  --app-bg:                  #0f172a;
+  --sidebar-bg:              #1e293b;
+  --sidebar-border:          rgba(255, 255, 255, 0.05);
+  --surface:                 #1e293b;
+  --surface-hover:           #273549;
+  --border:                  rgba(255, 255, 255, 0.07);
+  --divider:                 rgba(255, 255, 255, 0.08);
+  --text-primary:            #f1f5f9;
+  --text-secondary:          #94a3b8;
+  --thead-bg:                rgba(15, 23, 42, 0.5);
+  --input-bg:                #273549;
+  --input-border:            rgba(255, 255, 255, 0.1);
+  --nav-active-bg:           rgba(255, 255, 255, 0.12);
+  --nav-active-text:         #f1f5f9;
+  --nav-inactive-text:       #94a3b8;
+  --nav-hover-bg:            rgba(255, 255, 255, 0.07);
+  --nav-chevron-inactive:    #64748b;
+  --nav-sub-active-text:     #f1f5f9;
+  --nav-sub-inactive-text:   #64748b;
+  --nav-sub-hover-text:      #cbd5e1;
+  --user-hover-bg:           rgba(255, 255, 255, 0.08);
+  --dropdown-bg:             #273549;
+  --dropdown-border:         rgba(255, 255, 255, 0.08);
+}
+
+/* ── Tailwind Config ──────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--app-bg);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: "SFMono-Regular", "Consolas", monospace;
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Remap dark: variant to .theme-dark — all existing dark: classes work automatically */
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background-color: var(--app-bg);
+  color: var(--text-primary);
+  font-family: var(--font-dm-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html {
+  transition: font-size 0.25s ease;
+}
+
+.sidebar-transition,
+.sidebar-transition *,
+.settings-transition,
+.settings-transition * {
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+html[data-font-size="sm"] {
+  font-size: 87.5%;
+}
+
+html[data-font-size="md"] {
+  font-size: 100%;
+}
+
+html[data-font-size="lg"] {
+  font-size: 112.5%;
+}
+
+select {
+  appearance: none;
+  padding-right: 2rem;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 13px) 50%, calc(100% - 8px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+.icon-size,
+.icon-size > svg {
+  transform: scale(100%);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+[data-icon-size="sm"] .icon-size,
+[data-icon-size="sm"] .icon-size > svg {
+  transform: scale(80%);
+}
+
+[data-icon-size="lg"] .icon-size,
+[data-icon-size="lg"] .icon-size > svg {
+  transform: scale(120%);
 }

@@ -46,7 +46,8 @@ export default function KeuanganPage() {
           </label>
           <select
             id="sum-filter"
-            className="border border-gray-300 dark:border-gray-600 rounded-lg px-2 py-1.5 md:py-2 text-xs md:text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="rounded-lg px-2 py-1.5 md:py-2 text-xs md:text-sm focus:ring-2 focus:outline-none focus:ring-blue-500/50 transition-colors duration-200"
+          style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)", color: "var(--text-primary)" }}
           >
             <option value="">Semua Waktu</option>
             <option value="1">Hari Ini</option>
@@ -58,23 +59,23 @@ export default function KeuanganPage() {
       </div>
       
       <section className="mb-4 md:mb-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-black/10 dark:border-white/10">
-          <div className="grid grid-cols-2 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-black/10 dark:divide-white/10">
+        <div className="rounded-xl shadow-sm" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x" style={{ borderColor: "var(--divider)" }}>
             <div className="p-3 md:p-4 flex items-center justify-between">
               <div>
-                <p className="text-[11px] md:text-xs font-medium text-gray-600 dark:text-gray-400">Saldo Saat Ini</p>
-                <p className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-100">{formatCurrency(totalBalance)}</p>
+                <p className="text-[11px] md:text-xs font-medium" style={{ color: "var(--text-secondary)" }}>Saldo Saat Ini</p>
+                <p className="text-lg md:text-xl font-semibold" style={{ color: "var(--text-primary)" }}>{formatCurrency(totalBalance)}</p>
               </div>
             </div>
             <div className="p-3 md:p-4 flex items-center justify-between">
               <div>
-                <p className="text-[11px] md:text-xs font-medium text-gray-600 dark:text-gray-400">Total Pendapatan</p>
+                <p className="text-[11px] md:text-xs font-medium" style={{ color: "var(--text-secondary)" }}>Total Pendapatan</p>
                 <p className="text-lg md:text-xl font-semibold text-green-600 dark:text-green-400">{formatCurrency(totalIncome)}</p>
               </div>
             </div>
             <div className="p-3 md:p-4 flex items-center justify-between">
               <div>
-                <p className="text-[11px] md:text-xs font-medium text-gray-600 dark:text-gray-400">Total Pengeluaran</p>
+                <p className="text-[11px] md:text-xs font-medium" style={{ color: "var(--text-secondary)" }}>Total Pengeluaran</p>
                 <p className="text-lg md:text-xl font-semibold text-red-600 dark:text-red-400">{formatCurrency(totalExpense)}</p>
               </div>
             </div>
@@ -108,7 +109,8 @@ export default function KeuanganPage() {
             <div className="flex items-center gap-2">
               <select
                 id="category-filter"
-                className="border border-gray-300 dark:border-gray-600 rounded-lg px-2 md:px-3 py-2 text-xs md:text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="rounded-lg px-2 md:px-3 py-2 text-xs md:text-sm focus:ring-2 focus:outline-none focus:ring-blue-500/50 transition-colors duration-200"
+                style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)", color: "var(--text-primary)" }}
               >
                 <option value="">Semua Kategori</option>
                 <option value="operasional">Operasional</option>
@@ -125,9 +127,9 @@ export default function KeuanganPage() {
             </div>
           </div>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-x-auto">
+        <div className="rounded-xl overflow-x-auto" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
           <table className="w-max min-w-full">
-            <thead className="bg-gray-50 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700">
+            <thead style={{ background: "var(--thead-bg)", borderBottom: "1px solid var(--border)" }}>
               <tr>
                 <th className="px-2 md:px-4 py-2 md:py-3 text-center text-xs font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400 whitespace-nowrap">
                   No.
@@ -206,7 +208,7 @@ export default function KeuanganPage() {
                 </React.Fragment>
               ))}
             </tbody>
-            <tfoot className="bg-gray-50 dark:bg-gray-900/50 border-t-2 border-gray-200 dark:border-gray-700">
+            <tfoot style={{ background: "var(--thead-bg)", borderTop: "2px solid var(--border)" }}>
               <tr>
                 <td colSpan={6} className="px-2 md:px-4 py-3 md:py-4 text-xs md:text-sm font-semibold text-right text-gray-700 dark:text-gray-300 whitespace-nowrap">
                   Saldo Keseluruhan:

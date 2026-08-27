@@ -10,7 +10,7 @@ export default function LoginForm() {
     <>
       <h1 className="text-3xl font-bold mb-2">Beranda</h1>
       <div>
-        <div className="mt-6 p-4 border border-gray-300 rounded-lg shadow-sm bg-white dark:bg-gray-700 hover:shadow-md transition">
+        <div className="mt-6 p-5 rounded-xl shadow-sm transition" style={{ border: "1px solid var(--border)", background: "var(--surface)" }}>
           <div className="mb-4 flex justify-between items-center">
             <div className="flex items-center justify-between mb-4">
               <p>Kunjungan</p>
