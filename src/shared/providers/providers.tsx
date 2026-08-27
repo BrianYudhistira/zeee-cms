@@ -1,7 +1,12 @@
 "use client";
 
-import { AppThemeProvider } from "./theme.provider";
+import { ThemeApplier } from "./theme-applier";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <AppThemeProvider>{children}</AppThemeProvider>;
+  return (
+    <>
+      <ThemeApplier />
+      {children}
+    </>
+  );
 }

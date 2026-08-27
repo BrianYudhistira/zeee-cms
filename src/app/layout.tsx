@@ -1,26 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/shared/providers/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const RobotoFont = Roboto({
-  weight: ["400", "700"],
-  variable: "--font-roboto",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "ZeeeHub"
+  title: "ZeeeHub",
 };
 
 export default function RootLayout({
@@ -29,10 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${RobotoFont.variable} antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning className="theme-light">
+      <body className="antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>
